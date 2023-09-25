@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+
+{% block content %}
+{% for product in ProductList %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{product.ProductName}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{product.BrandName}}</h6>
+      <p class="card-text">Product Type - {{product.Type}}</p>
+      <p class="card-text">Product Price - {{product.Price}}</p>
+      <a href="#" class="card-link">View</a>
+      <a href="#" class="card-link">Add To Caart</a>
+    </div>
+  </div>
+  {% endfor%}
+{% endblock %}
