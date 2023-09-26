@@ -1,17 +1,27 @@
 {% extends 'base.html' %} 
 
-
 {% block content %}
-{% for product in ProductList %}
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{product.ProductName}}</h5>
-      <h6 class="card-subtitle mb-2 text-muted">{{product.BrandName}}</h6>
-      <p class="card-text">Product Type - {{product.Type}}</p>
-      <p class="card-text">Product Price - {{product.Price}}</p>
-      <a href="#" class="card-link">View</a>
-      <a href="#" class="card-link">Add To Caart</a>
+<div class="row py-4">
+  {% for product in ProductList %}
+    <div class="col-md-4"> <!-- Use col-md-4 to create three columns per row on medium-sized screens -->
+      <div class="card mb-3">
+        <div class="card-body">
+          {% if product.ProductImage %}
+          <img src="{{ product.ProductImage.url }}" alt="{{ product.ProductName }}" width="120" height="80"/>
+          {% endif %}
+          <h5 class="card-title">{{ product.ProductName }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">{{ product.BrandName }}</h6>
+          <p class="card-text">Product Type - {{ product.Type }}</p>
+          <p class="card-text">Product Price - {{ product.Price }}</p>
+          <a href="{% url 'products:product_detail' product.id %}" class="card-link">View</a>
+          
+        </div>
+      </div>
     </div>
-  </div>
-  {% endfor%}
+    
+    {% if forloop.counter|divisibleby:3 and not forloop.last %}
+      </div><div class="row py-4"> <!-- Close and open a new row after every three cards -->
+    {% endif %}
+  {% endfor %}
+</div>
 {% endblock %}

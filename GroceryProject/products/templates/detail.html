@@ -1,6 +1,55 @@
-{% extends 'base.html' %} 
-
+{% extends 'base.html' %}
 
 {% block content %}
-<h1>Product detail page</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card">
+        <div class="card-body">
+          {% if product.ProductImage %}
+        <img src="{{ product.ProductImage.url }}" alt="{{ product.ProductName }}" width="300" height="200" />
+          {% endif %}
+        <h2 class="card-title">{{ product.ProductName }}</h2>
+          <h6 class="card-subtitle mb-2 text-muted">{{ product.BrandName }}</h6>
+          <p class="card-text">{{ product.Type }}</p>
+          <p class="card-text">Price: ${{ product.Price }}</p>
+          <!-- You can add more details here as needed -->
+          {% if not product.ExistInCart %}
+          <div class="d-flex align-items-center">
+            <form action="{% url 'carts:add' %}" method="POST" class="d-flex align-items-center">
+              {% csrf_token %}
+              <input type="hidden" name="productId" value={{ product.id }}>
+            <div class="input-group" style="width: 150px;">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="productQty">
+                        <span class="">-</span>
+                    </button>
+                </span>
+                <input type="text" name="productQty" class="form-control input-number" value="1" min="1" max="10">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="productQty">
+                        <span class="">+</span>
+                    </button>
+                </span>
+            </div>
+            <div style="margin-left: 15px;">
+                <button  type="submit" class="btn btn-success">Add To Cart</button>
+            </div>
+            
+          </form>
+        </div>  
+
+        {% else %}
+        <a href="{% url 'carts:removeFromCart' product.id %}" class="btn btn-danger">Remove from Cart</a>
+        <br>
+        {% endif %}
+        <br>
+
+        <a href="{% url 'products:productList' %}" class="btn btn-primary">Back to Product List</a>  
+    </div>
+    <br>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

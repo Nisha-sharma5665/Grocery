@@ -22,6 +22,7 @@ class Product(models.Model):
     ProductName = models.CharField(max_length=50)
     Price = models.IntegerField()
     BrandName = models.ForeignKey(Brand,on_delete=models.CASCADE)
+    ProductImage = models.ImageField(upload_to='product_images/',null=True)
     Type = models.CharField(
         max_length = 20,
         choices = TYPE_CHOICES,

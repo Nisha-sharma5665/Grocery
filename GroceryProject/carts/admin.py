@@ -1,4 +1,8 @@
 from django.contrib import admin
-from . import models
+from carts import models
+
+
+
 # Register your models here.
-admin.site.register(models.UserMaster)
+
+admin.site.register(models.Cart)
