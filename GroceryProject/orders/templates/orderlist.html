@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<table>
+    <thead>
+        <tr>
+            <th>Order Number</th>
+            <th>Ordered Date</th>
+            <th>Order Delevery Date</th>
+            <th>Order Status </th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+           <td>Order no 1</td>
+           <td>26/09/2023</td>
+           <td>29/09/2023</td>
+           <td>Order Placed</td>
+           <td><button class="btn btn-primary">View</button> <button class="btn btn-danger">Cancel</button></td>
+          </tr>
+          <tr>
+            <td>Order no 2</td>
+            <td>26/09/2023</td>
+            <td>29/09/2023</td>
+            <td>Order Placed</td>
+            <td><button class="btn btn-primary">View</button> <button class="btn btn-danger">Cancel</button></td>
+           </tr>
+           <tr>
+            <td>Order no 3</td>
+            <td>26/09/2023</td>
+            <td>29/09/2023</td>
+            <td>Order Placed</td>
+            <td><button class="btn btn-primary">View</button> <button class="btn btn-danger">Cancel</button></td>
+           </tr>
+           <tr>
+            <td>Order no 4</td>
+            <td>26/09/2023</td>
+            <td>29/09/2023</td>
+            <td>Order Placed</td>
+            <td><button class="btn btn-primary">View</button> <button class="btn btn-danger">Cancel</button></td>
+           </tr>
+    </tbody>    
+</table>
+<br>
+
+{% endblock %}
+
+
+
+
+

@@ -34,7 +34,8 @@ def createOrder(request):
     return redirect("orders:orderList")
 
 def orderList(request):
-    pass
+    return render(request,'orderlist.html')
+
 
 def cancelOrder(request):
     pass
