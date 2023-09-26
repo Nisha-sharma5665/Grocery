@@ -1,7 +1,6 @@
 
 
-# Ignore media files
-media/
+
 
 # Ignore log files
 *.log
